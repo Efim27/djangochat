@@ -11,7 +11,7 @@
          <ul class="uk-navbar-nav">
             {% if user.is_authenticated %}
                <li>
-                  <a href="#"><span uk-icon="user"> </span><span>Main User</span></a>
+                  <a href="#"><span uk-icon="user"> </span><span>{{ user.username }}</span></a>
                   <div class="uk-navbar-dropdown">
                      <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li><a href="/logout">Выйти</a></li>
