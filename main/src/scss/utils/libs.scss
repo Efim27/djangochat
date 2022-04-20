@@ -1,0 +1,10 @@
+/* Libs:
+  https://github.com/vedees/webpack-template/blob/master/README.md#import-only-sass-or-css-libs
+  ========================================================================== */
+@import "~uikit/dist/css/uikit.min.css";
+@import "~uikit/src/scss/variables.scss";
+
+.uk-table-hover tbody tr:hover, .uk-table-hover>tr:hover {
+  background: #f5f5f5;
+  transition: 0.3s;
+}

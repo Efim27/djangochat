@@ -131,3 +131,4 @@ dmypy.json
 # django
 # Временная БД
 db.sqlite3
+node_modules

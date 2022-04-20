@@ -1,0 +1,16 @@
+{
+    "devDependencies": {
+        "@types/uikit": "^3.3.2",
+        "browserify": "^17.0.0",
+        "gulp": "^4.0.2",
+        "gulp-browserify": "^0.5.1",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-sass": "^5.1.0",
+        "node-sass": "^7.0.1",
+        "node-sass-tilde-importer": "^1.0.2",
+        "sass": "^1.50.1",
+        "tsify": "^5.0.4",
+        "uikit": "^3.13.9",
+        "vinyl-source-stream": "^2.0.0"
+    }
+}
