@@ -1,5 +1,40 @@
 {% extends "main/layouts/main.html" %}
 {% block title %}Регистрация{%endblock %}
 {% block content %}
-	<h1>Signup</h1>
+<div class="signup-page uk-flex uk-flex-center">
+	<div class="signup uk-card uk-card-body uk-card-hover">
+		<h2 class="signup__header uk-card-title">Создать аккаунт</h2>
+		<form class="signup__form">
+			<div class="uk-margin">
+				<label class="uk-form-label" for="username">Логин</label>
+				<div class="uk-form-controls">
+					<input class="uk-input" name="username" type="text" placeholder="Имя пользователя">
+				</div>
+			</div>
+
+            <div class="uk-margin">
+				<label class="uk-form-label" for="password">E-mail</label>
+				<div class="uk-form-controls">
+					<input class="uk-input" name="email" type="email" placeholder="E-mail">
+				</div>
+			</div>
+
+			<div class="uk-margin">
+				<label class="uk-form-label" for="password">Пароль</label>
+				<div class="uk-form-controls">
+					<input class="uk-input" name="password1" type="password1" placeholder="Пароль">
+				</div>
+			</div>
+
+            <div class="uk-margin">
+				<label class="uk-form-label" for="password">Повторите пароль</label>
+				<div class="uk-form-controls">
+					<input class="uk-input" name="password2" type="password2" placeholder="Повторите пароль">
+				</div>
+			</div>
+
+			<button class="signup__submit uk-button uk-button-primary">Создать</button>
+		</form>
+	</div>
+</div>
 {% endblock %}

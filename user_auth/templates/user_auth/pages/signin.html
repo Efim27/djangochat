@@ -1,5 +1,26 @@
 {% extends "main/layouts/main.html" %}
 {% block title %}Войти{%endblock %}
 {% block content %}
-	<h1>Signin</h1>
+<div class="signin-page uk-flex uk-flex-center">
+	<div class="signin uk-card uk-card-body uk-card-hover">
+		<h2 class="signin__header uk-card-title">Войти в систему</h2>
+		<form class="signin__form">
+			<div class="uk-margin">
+				<label class="uk-form-label" for="username">Логин</label>
+				<div class="uk-form-controls">
+					<input class="uk-input" name="username" type="text" placeholder="Имя пользователя">
+				</div>
+			</div>
+
+			<div class="uk-margin">
+				<label class="uk-form-label" for="password">Пароль</label>
+				<div class="uk-form-controls">
+					<input class="uk-input" name="password" type="password" placeholder="Пароль">
+				</div>
+			</div>
+
+			<button class="signin__submit uk-button uk-button-primary">Войти</button>
+		</form>
+	</div>
+</div>
 {% endblock %}

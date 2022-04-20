@@ -1,0 +1,16 @@
+.signup {
+    width: 100%;
+    max-width: 500px;
+
+    &__header {
+        text-align: center;
+    }
+
+    &__form {
+        margin-top: 20px;
+    }
+
+    &__submit {
+        margin-top: 10px;
+    }
+}
