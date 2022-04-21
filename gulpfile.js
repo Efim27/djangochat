@@ -21,7 +21,7 @@ const config = {
     }
 }
 
-function compileSass() {
+const compileSass = () => {
     return src(config.scss.entry)
         .pipe(sass({
             importer: tildeImporter
@@ -30,7 +30,7 @@ function compileSass() {
         .pipe(dest(config.scss.outDir));
 }
 
-function compileTs() {
+const compileTs = () => {
     return browserify({
             basedir: '.',
             debug: true,
@@ -44,7 +44,9 @@ function compileTs() {
         .pipe(dest(config.ts.outDir));
 }
 
-exports.default = function() {
+exports.default = () => {
     watch([config.scss.watch], compileSass);
     watch([config.ts.watch], compileTs);
 }
+
+exports.build = series(compileSass, compileTs);
