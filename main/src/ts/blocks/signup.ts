@@ -4,6 +4,9 @@ import PageBlock from './PageBlock';
 
 export default class signup extends PageBlock {
     private readonly formDom;
+    private readonly formSubmitBtnDom;
+
+    private isFormLocked: boolean = false;
 
     protected init(): boolean {
         if (!document.querySelector('.signup')) {
@@ -11,6 +14,7 @@ export default class signup extends PageBlock {
         }
 
         this.formDom = document.querySelector(".signup__form");
+        this.formSubmitBtnDom = this.formDom.querySelector(".signup__submit");
 
         return true;
     }
@@ -48,9 +52,26 @@ export default class signup extends PageBlock {
         window.location.href = '/signin';
     }
 
+    private lockForm = (): void => {
+        this.formSubmitBtnDom.disabled = true;
+        this.isFormLocked = true;
+    }
+
+    private unlockForm = (): void => {
+        this.formSubmitBtnDom.disabled = false;
+        this.isFormLocked = false;
+    }
+
     private formHandler(): void {
         this.formDom.addEventListener('submit', (event) => {
             event.preventDefault();
+
+            if (this.isFormLocked) {
+                return;
+            }
+
+            this.lockForm();
+            setTimeout(this.unlockForm, 500);
 
             fetch('/signup/post', {
                 method: 'POST',

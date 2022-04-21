@@ -6,7 +6,10 @@ import PageBlock from './PageBlock';
 
 export default class signin extends PageBlock {
     private readonly formDom;
+    private readonly formSubmitBtnDom;
     private readonly formErrorsDom;
+
+    private isFormLocked: boolean = false;
 
     protected init(): boolean {
         if (!document.querySelector('.signin')) {
@@ -14,7 +17,8 @@ export default class signin extends PageBlock {
         }
 
         this.formDom = document.querySelector(".signin__form");
-        this.formErrorsDom = this.formDom.querySelector(".signup__form-error");
+        this.formErrorsDom = this.formDom.querySelector(".signin__form-error");
+        this.formSubmitBtnDom = this.formDom.querySelector(".signin__submit");
 
         return true;
     }
@@ -37,9 +41,26 @@ export default class signin extends PageBlock {
         window.location.href = '/';
     }
 
+    private lockForm = (): void => {
+        this.formSubmitBtnDom.disabled = true;
+        this.isFormLocked = true;
+    }
+
+    private unlockForm = (): void => {
+        this.formSubmitBtnDom.disabled = false;
+        this.isFormLocked = false;
+    }
+
     private formHandler(): void {
         this.formDom.addEventListener('submit', (event) => {
             event.preventDefault();
+
+            if (this.isFormLocked) {
+                return;
+            }
+
+            this.lockForm();
+            setTimeout(this.unlockForm, 500);
 
             fetch('/signin/post', {
                 method: 'POST',
