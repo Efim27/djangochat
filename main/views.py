@@ -16,3 +16,8 @@ def user_list(request):
 	user_list = User.objects.all().exclude(id=request.user.id)
 
 	return render(request, 'main/pages/user/list.html', {'userList': user_list})
+
+@require_GET
+@login_required
+def user_chat(request):
+	return render(request, 'main/pages/chat.html')

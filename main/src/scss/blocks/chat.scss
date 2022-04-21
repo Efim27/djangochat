@@ -1,0 +1,65 @@
+.user-chat {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__messages {
+        height: 100%;
+        max-height: 100%;
+        overflow-y: scroll;
+        padding-right: 10px;
+    }
+
+    &__message {
+        margin-top: 20px;
+        border-radius: 10px;
+        border-top-left-radius: 0;
+
+        &_imowner {
+            border-radius: 10px;
+            border-top-right-radius: 0;
+        }
+
+        &:nth-child(1) {
+            margin-top: 0px;
+        }
+    }
+
+    &__bottom-bar {
+        margin-top: 50px;
+        display: flex;
+    }
+
+    &__textarea {
+        width: 100%;
+    }
+
+    &__btns {
+        width: 100%;
+        max-width: 150px;
+        margin-left: 20px;
+    }
+
+    &__btn {
+        width: 100%;
+
+        &_refresh {
+        }
+
+        &_send {
+        }
+    }
+}
+
+.user-chat-message {
+
+    &__owner {
+        color: white !important;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    &__text {
+    }
+}

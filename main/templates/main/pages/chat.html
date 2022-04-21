@@ -1,0 +1,23 @@
+{% extends "main/layouts/main.html" %}
+{% block title %}Главная{%endblock %}
+{% block content %}
+	<div class="user-chat uk-card uk-card-body uk-card-hover">
+        <div class="user-chat__messages">
+            <div class="user-chat__message user-chat-message uk-card uk-card-body uk-card-small uk-card-secondary uk-card-hover uk-animation-slide-right-small">
+                <div class="user-chat-message__owner">123123</div>
+                <div class="user-chat-message__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat voluptatum repudiandae dolore reiciendis esse vel nobis repellat impedit quod, reprehenderit officiis dignissimos incidunt rerum doloribus, est doloremque perferendis, corrupti harum!</div>
+            </div>
+            <div class="user-chat__message user-chat__message_imowner user-chat-message uk-card uk-card-body uk-card-small uk-card-primary uk-card-hover uk-animation-slide-right-small">
+                <div class="user-chat-message__owner">Я</div>
+                <div class="user-chat-message__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat voluptatum repudiandae dolore reiciendis esse vel nobis repellat impedit quod, reprehenderit officiis dignissimos incidunt rerum doloribus, est doloremque perferendis, corrupti harum!</div>
+            </div>
+        </div>
+        <div class="user-chat__bottom-bar">
+            <textarea class="user-chat__textarea uk-textarea" placeholder="Текст сообщения..."></textarea>
+            <div class="user-chat__btns">
+                <button class="user-chat__btn user-chat__btn_refresh uk-button">Обновить</button>
+                <button class="user-chat__btn user-chat__btn_send uk-button uk-button-primary">Отправить</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
