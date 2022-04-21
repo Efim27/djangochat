@@ -132,3 +132,7 @@ dmypy.json
 # Временная БД
 db.sqlite3
 node_modules
+
+#frontend dist
+/main/static/css/main.css
+/main/static/js/main.min.js
