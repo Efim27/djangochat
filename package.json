@@ -12,5 +12,8 @@
         "tsify": "^5.0.4",
         "uikit": "^3.13.9",
         "vinyl-source-stream": "^2.0.0"
+    },
+    "dependencies": {
+        "cross-fetch": "^3.1.5"
     }
 }

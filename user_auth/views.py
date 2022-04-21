@@ -25,9 +25,9 @@ def signin_post(request):
 	if request.user.is_authenticated:
 		return HttpResponseForbidden()
 
-	email = request.POST.get('email')
+	username = request.POST.get('username')
 	password = request.POST.get('password')
-	user = User.objects.filter(email=email).first()
+	user = User.objects.filter(username=username).first()
 
 	if (user is None) or (not user.check_password(password)):
 		return JsonResponse({
