@@ -20,7 +20,6 @@ def signin_view(request):
 
 
 @require_POST
-@csrf_exempt
 def signin_post(request):
 	if request.user.is_authenticated:
 		return HttpResponseForbidden()
@@ -50,7 +49,6 @@ def signup_view(request):
 
 
 @require_POST
-@csrf_exempt
 def signup_post(request):
 	if request.user.is_authenticated:
 		return HttpResponseForbidden()

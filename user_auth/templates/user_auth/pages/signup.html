@@ -5,6 +5,8 @@
 	<div class="signup uk-card uk-card-body uk-card-hover">
 		<h2 class="signup__header uk-card-title">Создать аккаунт</h2>
 		<form class="signup__form">
+			<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
 			<div class="uk-margin">
 				<label class="uk-form-label" for="username">Логин</label>
 				<div class="uk-form-controls signup__field-username">

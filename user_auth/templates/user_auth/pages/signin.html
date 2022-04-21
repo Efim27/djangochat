@@ -5,6 +5,8 @@
 	<div class="signin uk-card uk-card-body uk-card-hover">
 		<h2 class="signin__header uk-card-title">Войти в систему</h2>
 		<form class="signin__form">
+			<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
 			<div class="uk-margin">
 				<label class="uk-form-label" for="username">Логин</label>
 				<div class="uk-form-controls">
