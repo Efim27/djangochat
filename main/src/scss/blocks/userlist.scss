@@ -1,0 +1,31 @@
+.user-list {
+
+    &__items {
+    }
+
+    &__card {
+        margin-top: 10px;
+
+        &:nth-child(1) {
+            margin-top: 0px;
+        }
+    }
+}
+
+.user-list-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__info {
+    }
+
+    &__btns {
+    }
+
+    &__btn {
+
+        &_chat {
+        }
+    }
+}

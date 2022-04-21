@@ -1,0 +1,19 @@
+{% extends "main/layouts/main.html" %}
+{% block title %}Главная{%endblock %}
+{% block content %}
+	<div class="user-list">
+        <div class="user-list__items">
+            {% for user in userList %}
+                <div class="user-list__card user-list-card uk-card uk-card-default uk-card-body uk-card-hover">
+                    <div class="user-list-card__info">
+                        <h3 class="uk-card-title">{{ user.username }}</h3>
+                        <p>E-mail: {{ user.email }}</p>
+                    </div>
+                    <div class="user-list-card__btns">
+                        <a href="/chat/?user_id={{ user.id }}" class="user-list-card__btn user-list-card__btn_chat uk-button uk-button-primary">Чат</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
