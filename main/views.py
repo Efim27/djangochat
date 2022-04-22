@@ -1,7 +1,8 @@
+from email import message
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_GET, require_POST
-from django.http import JsonResponse, HttpResponseForbidden
+from django.http import JsonResponse
 from django.contrib.auth.models import User
 
 from .models import UserMsg
@@ -53,4 +54,24 @@ def user_chat_send(request):
 
 	return JsonResponse({
 			'status': 'ok'
+		})
+
+@require_POST
+@login_required
+def user_chat_messages(request):
+	user = request.user
+	recipient_id = request.POST.get('recipient_id')
+	recipient = User.objects.filter(id=int(recipient_id)).first()
+
+	if not recipient:
+		return JsonResponse({
+			'status': 'error',
+			'error': 'Получатель сообщения не найден'
+		})
+
+	message_list = UserMsg.user_msgs.dicts_by_users(user, recipient)
+
+	return JsonResponse({
+			'status': 'ok',
+			'messages': message_list
 		})

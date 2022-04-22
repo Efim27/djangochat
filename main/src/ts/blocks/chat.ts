@@ -11,8 +11,14 @@ export default class signin extends PageBlock {
     private readonly refreshBtnDom;
 
     private csrfToken: string;
+    private chatMessageList: {
+        owner: number,
+        recipient: number,
+        msg_text: string,
+        created_at: string,
+    }[];
     private isChatLocked: boolean = false;
-    private chatMessageList: string[];
+    private recipientId: number;
 
     protected init(): boolean {
         if (!document.querySelector('.user-chat')) {
@@ -23,11 +29,13 @@ export default class signin extends PageBlock {
         this.submitBtnDom = this.chatDom.querySelector(".user-chat__btn_send");
         this.refreshBtnDom = this.chatDom.querySelector(".user-chat__btn_refresh");
         this.csrfToken = this.chatDom.querySelector(".user-chat__csrf-token").value;
+        this.recipientId = getParameterByName('user_id');
 
         return true;
     }
 
     protected start(): void {
+        this.refreshMsgList();
         this.chatHandler();
     }
 
@@ -38,7 +46,7 @@ export default class signin extends PageBlock {
 
         const msgText: string = this.chatDom.querySelector('.user-chat__textarea').value;
         const sendMsgFormData: FormData = new FormData();
-        sendMsgFormData.append('recipient_id', getParameterByName('user_id'));
+        sendMsgFormData.append('recipient_id', this.recipientId);
         sendMsgFormData.append('msg_text', msgText);
         sendMsgFormData.append('csrfmiddlewaretoken', this.csrfToken);
 
@@ -60,6 +68,34 @@ export default class signin extends PageBlock {
             });
     }
 
+    private refreshMsgList(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            const sendMsgFormData: FormData = new FormData();
+            sendMsgFormData.append('recipient_id', this.recipientId);
+            sendMsgFormData.append('csrfmiddlewaretoken', this.csrfToken);
+
+            fetch('/chat/list', {
+                method: 'POST',
+                body: sendMsgFormData
+            })
+                .then(response => response.json())
+                .then((data) => {
+                    if (data.status == 'error') {
+                        UIkit.notification(data.error);
+                        return reject();
+                    }
+    
+                    this.chatMessageList = data.messages;
+                    return resolve();
+                })
+                .catch(error => {
+                    console.log(error);
+                    UIkit.notification('Ошибка!');
+                    return reject();
+                });
+        });
+    }
+
     private lockSubmitBtn = (): void => {
         this.submitBtnDom.disabled = true;
         this.isChatLocked = true;
@@ -72,7 +108,6 @@ export default class signin extends PageBlock {
 
     private chatHandler(): void {
         this.submitBtnDom.addEventListener('click', (event) => {
-            console.log();
             if (this.isChatLocked) {
                 return;
             }
@@ -81,6 +116,13 @@ export default class signin extends PageBlock {
 
             this.lockSubmitBtn();
             setTimeout(this.unlockSubmitBtn, 500);
+        });
+
+        this.refreshBtnDom.addEventListener('click', (event) => {
+            this.refreshMsgList().then(() => {
+                console.log(123);
+                console.log(this.chatMessageList);
+            });
         });
     }
 }
