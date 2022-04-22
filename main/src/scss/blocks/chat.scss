@@ -16,6 +16,10 @@
         border-radius: 10px;
         border-top-left-radius: 0;
 
+        &_example {
+            display: none;
+        }
+
         &_imowner {
             border-radius: 10px;
             border-top-right-radius: 0;
@@ -54,10 +58,20 @@
 
 .user-chat-message {
 
-    &__owner {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         color: white !important;
+    }
+
+    &__owner{
         font-size: 18px;
         font-weight: 600;
+    }
+
+    &__datetime {
+        margin-left: 20px;
     }
 
     &__text {

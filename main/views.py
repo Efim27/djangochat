@@ -53,7 +53,8 @@ def user_chat_send(request):
 	new_msg.save()
 
 	return JsonResponse({
-			'status': 'ok'
+			'status': 'ok',
+			'message': new_msg.get_dict()
 		})
 
 @require_POST
