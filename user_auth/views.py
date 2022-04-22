@@ -53,7 +53,6 @@ def signup_post(request):
 	if request.user.is_authenticated:
 		return HttpResponseForbidden()
 
-	print(request.POST)
 	form = RegisterForm(request.POST)
 	if not form.is_valid():
 		return JsonResponse({

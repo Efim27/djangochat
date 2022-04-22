@@ -2,6 +2,7 @@
 {% block title %}Главная{%endblock %}
 {% block content %}
 	<div class="user-chat uk-card uk-card-body uk-card-hover">
+        <input type="hidden" class="user-chat__csrf-token" value="{{ csrf_token }}">
         <div class="user-chat__messages">
             <div class="user-chat__message user-chat-message uk-card uk-card-body uk-card-small uk-card-secondary uk-card-hover uk-animation-slide-right-small">
                 <div class="user-chat-message__owner">123123</div>
